@@ -9,7 +9,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--g:#03594C;--gl:#D6E2DF;--gm:#88A9A1;--bg:#FAFAFA;--sf:#F7F7F7;--bd:#DEDEDE;--bm:#88A9A1;--tx:#3B3E43;--mu:#656565;--yw:#F1EDB1;--re:#C62828;--rebg:#FFEBEE;--wh:#fff;--r:12px;--rs:8px}
 html,body{width:100%;height:100%;overflow:hidden;background:#E8EDEB;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif}
-.dev{width:375px;height:812px;background:var(--bg);border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative;display:flex;flex-direction:column}
+.dev{width:375px;height:736px;background:var(--bg);border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative;display:flex;flex-direction:column}
 .hdr{display:flex;align-items:center;height:56px;flex-shrink:0;background:var(--bg);z-index:5}
 .hico{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:pointer;color:var(--g);flex-shrink:0}
 .hico:hover{background:rgba(3,89,76,.08)}
@@ -99,7 +99,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#E8EDEB;display:flex
 .tag-svg-wrap svg{display:block;height:22px;width:auto}
 .himg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hin{background:var(--bg);width:228px;padding:12px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.18);position:relative;z-index:1;display:flex;flex-direction:column;gap:3px;flex-shrink:0}
-.hname{font-size:16px;font-weight:600;color:var(--g);line-height:1.3;padding-top:5px}
+.hname{font-size:18px;font-weight:600;color:var(--g);line-height:1.3;padding-top:5px}
 .hstar{font-size:13px;color:var(--mu);padding:1px 0}
 .hloc{display:flex;align-items:center;gap:3px;font-size:12px;color:var(--tx)}
 .htags{display:flex;flex-direction:column;gap:3px;padding-top:8px}
@@ -124,8 +124,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#E8EDEB;display:flex
 /* DETAIL ROWS */
 .drow{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--bd);gap:8px}
 .drow:last-child{border-bottom:none}
-.dlbl{font-size:14px;color:var(--mu);flex:1}
-.dval{font-size:14px;color:var(--tx);text-align:right}
+.dlbl{font-size:16px;color:var(--mu);flex:1}
+.dval{font-size:16px;color:var(--tx);text-align:right}
 .dval.lk{color:var(--g);text-decoration:underline;cursor:pointer}
 /* PRICE */
 .ptot{background:#F1EDB1;border-radius:var(--rs);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;margin-top:8px}
@@ -255,11 +255,11 @@ html,body{width:100%;height:100%;overflow:hidden;background:#E8EDEB;display:flex
         <div class="cttl">Añadir pasajero</div>
         <div style="display:flex;flex-direction:column;gap:18px">
           <div class="fld">
-            <div class="flbl">DNI o Pasaporte (Obligatorio)</div>
+            <div class="flbl">DNI o Pasaporte</div>
             <input class="finp" id="dniIn" type="text" placeholder="Documento con número y letra" maxlength="9">
           </div>
           <div class="fld">
-            <div class="flbl">Clave (Obligatorio)</div>
+            <div class="flbl">Clave</div>
             <div class="fwrp">
               <input class="finp" id="passIn" type="password" placeholder="Introduzca su clave" style="padding-right:44px">
               <div class="fico" onclick="tgPass()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#656565" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
@@ -449,9 +449,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:#E8EDEB;display:flex
     <div class="prog">
       <div class="prow"><div class="ptit">Configuración de la reserva</div><div class="pnum">3 de 7</div></div>
       <div class="pbar"><div class="pfil" style="width:42.9%"></div></div>
-      <div class="psub">Indique cómo se alojará cada pasajero y seleccione los servicios especiales que necesite.</div>
+      <div class="psub">Configure el alojamiento de cada pasajero. Si alguien necesita una habitación especial o viaja con mascota, márquelo en "Servicios especiales".</div>
     </div>
     <div class="cnt" id="p3cnt"></div>
+  </div>
+  <div id="p3GlobalErr" style="display:none;align-items:center;gap:8px;margin:0 16px 8px;background:#FFEBEE;border:1px solid #EF9A9A;border-radius:8px;padding:10px 14px">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span style="font-size:14px;color:#C62828">Los pasajeros no están correctamente distribuidos.</span>
   </div>
   <div class="bbar"><button class="btn btnp" onclick="valP3()">Continuar</button></div>
 </div>
@@ -572,9 +576,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:#E8EDEB;display:flex
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#A9C53E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
             <span>Transferencia bancaria online</span>
           </button>
-          <button class="pmeth" id="pm_oficina" onclick="selPay('oficina')">
+          <button class="pmeth" id="pm_agencia" onclick="selPay('agencia')">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#A9C53E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-            <span>Pago en oficina de viajes</span>
+            <span>Agencia de viajes</span>
+          </button>
+          <button class="pmeth" id="pm_cajero" onclick="selPay('cajero')">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#A9C53E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><rect x="6" y="9" width="4" height="3" rx="1"/><line x1="14" y1="10" x2="18" y2="10"/><line x1="14" y1="13" x2="18" y2="13"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
+            <span>Cajero automático</span>
           </button>
         </div>
         <div class="ferr" id="errPay" style="margin-bottom:8px">Selecciona un método de pago</div>
@@ -783,7 +791,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#E8EDEB;display:flex
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E65100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <span style="font-size:13px;font-weight:600;color:#E65100">Pago pendiente</span>
         </div>
-        <div style="font-size:13px;color:var(--tx);line-height:1.5">Recuerda acudir a tu oficina de viajes para completar el pago. Tu reserva está registrada pero no confirmada hasta que realices el pago total.</div>
+        <div id="confAlertText" style="font-size:13px;color:var(--tx);line-height:1.5">Acuda a la agencia de viajes para completar el pago. Tu reserva está registrada pero no confirmada hasta que realices el pago total.</div>
       </div>
       <div class="card">
         <div class="cttl">Viaje</div>
@@ -1056,7 +1064,7 @@ function doRemove(){
   renderPax();showToast('Pasajero eliminado');
 }
 function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastTxt').textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2800);}
-passengers.push({...PAX_DATA[0]});renderPax();
+renderPax(); // start empty
 // ===== PASO 2 BUSCADOR =====
 let transpVal=null,mascVal=null;
 function setTransp(val){
@@ -1121,116 +1129,193 @@ function pickDay(d){
 function clearDrp(){drpStart=null;drpEnd=null;document.getElementById('drpLabel').textContent='Selecciona rango de fechas';document.getElementById('drpLabel').style.color='var(--mu)';renderDrp();}
 document.addEventListener('click',e=>{if(drpOpen&&!document.getElementById('drpWrap').contains(e.target)){drpOpen=false;document.getElementById('drpCal').classList.remove('on');}});
 // ===== PASO 3 =====
-function renderP3(){
+function initRooms(){
+  // Auto-assign roommates based on passenger count rules
+  const n=passengers.length;
+  // Reset all
   passengers.forEach((_,i)=>{
-    if(!srvData[i])srvData[i]={answer:null,services:[]};
-    if(!roomData[i])roomData[i]={type:null,roommate:null};
+    if(!roomData[i]) roomData[i]={type:'doble',roommate:null};
+    else { roomData[i].type='doble'; roomData[i].roommate=null; }
   });
+  if(n===0) return;
+  if(n===1){
+    // 1 passenger: doble + random
+    roomData[0].roommate=-1;
+  } else {
+    // Pair passengers in order: 0-1, 2-3, etc.
+    for(let i=0;i<n;i+=2){
+      if(i+1<n){
+        // even pair
+        roomData[i].roommate=i+1;
+        roomData[i+1].roommate=i;
+      } else {
+        // odd last passenger: random
+        roomData[i].roommate=-1;
+      }
+    }
+  }
+}
+
+function renderP3(){
+  // Init data
+  passengers.forEach((_,i)=>{
+    if(!srvData[i]) srvData[i]={answer:null,services:[]};
+  });
+  // Init rooms only if not already set
+  const needsInit=passengers.some((_,i)=>!roomData[i]||roomData[i].type===null);
+  if(needsInit) initRooms();
+
   const cnt=document.getElementById('p3cnt');
   cnt.innerHTML=passengers.map((p,i)=>{
-    const rd=roomData[i]||{type:null,roommate:null};
+    const rd=roomData[i]||{type:'doble',roommate:null};
     const sd=srvData[i]||{answer:null,services:[]};
-    const showShare=rd.type==='doble';
-    let rmLabel='Seleccionar compañero';
-    if(rd.roommate!==null)rmLabel=rd.roommate===-1?'Asignar compañero aleatorio':(passengers[rd.roommate]?passengers[rd.roommate].name:'Compañero asignado');
-    return `<div class="p3card"><div class="p3hdr" onclick="tgP3(${i})">
-      <div class="avsm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#03594C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-      <div style="flex:1;font-size:15px;color:var(--tx)"><strong>${p.first}</strong> ${p.last}</div>
-      <svg class="exic op" id="p3ic${i}" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#03594C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18,15 12,9 6,15"/></svg>
-    </div>
-    <div class="p3bdy" id="p3b${i}">
-      <div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">Habitación</div>
-      <div class="p3rrow">
-        <label class="p3rlbl" onclick="setRoom(${i},'individual')">
-          <div class="p3ring"><div class="p3dot${rd.type==='individual'?' on':''}" id="rd${i}ind"></div></div>
-          <span class="p3ltxt">Individual (+15€)</span>
-        </label>
-        <label class="p3rlbl" onclick="setRoom(${i},'doble')">
-          <div class="p3ring"><div class="p3dot${rd.type==='doble'?' on':''}" id="rd${i}dob"></div></div>
-          <span class="p3ltxt">Doble</span>
-        </label>
+    const isIndividual=rd.type==='individual';
+
+    // Roommate chip label
+    let rmChip='';
+    if(!isIndividual){
+      let rmName='';
+      let isUnassigned=false;
+      if(rd.roommate===-1) rmName='Compañero aleatorio de otra reserva';
+      else if(rd.roommate!==null && rd.roommate!==undefined && passengers[rd.roommate]) rmName=passengers[rd.roommate].name;
+      else { rmName='Sin asignar'; isUnassigned=true; }
+      const chipBg = isUnassigned ? '#FFEBEE' : 'var(--gl)';
+      const chipColor = isUnassigned ? '#C62828' : 'var(--g)';
+      rmChip=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:16px;color:var(--tx)">Comparte con:</span>
       </div>
-      ${showShare?`<div class="p3share" onclick="openRoomSheet(${i})"><div><div style="font-size:12px;color:var(--mu);margin-bottom:2px">Comparte con:</div><div style="font-size:14px;font-weight:600;color:var(--g)">${rmLabel}</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#03594C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></div>`:''}
-      <div class="serr" id="rerr${i}">Selecciona el tipo de habitación</div>
-      <div style="border-top:1px solid var(--bd);margin-top:10px;padding-top:10px">
-        <div style="font-size:14px;font-weight:600;color:var(--g);margin-bottom:4px">¿Necesita servicios especiales?</div>
-        <div style="display:flex;gap:36px">
-          <label class="p3rlbl" onclick="setSrv(${i},'si')"><div class="p3ring"><div class="p3dot${sd.answer==='si'?' on':''}" id="rs${i}si"></div></div><span class="p3ltxt">Sí</span></label>
-          <label class="p3rlbl" onclick="setSrv(${i},'no')"><div class="p3ring"><div class="p3dot${sd.answer==='no'?' on':''}" id="rs${i}no"></div></div><span class="p3ltxt">No</span></label>
+      <div style="display:inline-flex;align-items:center;gap:6px;background:${chipBg};border-radius:99px;padding:4px 10px 4px 12px;margin-bottom:4px">
+        <span style="font-size:14px;color:${chipColor};font-weight:500">${rmName}</span>
+        ${!isUnassigned && rd.roommate!==-1?`<span onclick="openRoomSheet(${i})" style="cursor:pointer;color:${chipColor};font-size:16px;line-height:1;padding:0 2px">×</span>`:''}
+      </div>`;
+    }
+
+    return `<div class="p3card">
+      <div class="p3hdr" onclick="tgP3(${i})">
+        <div class="avsm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#03594C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div style="flex:1;font-size:15px;color:var(--tx)"><strong>${p.first}</strong> ${p.last}</div>
+        <svg class="exic op" id="p3ic${i}" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#03594C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18,15 12,9 6,15"/></svg>
+      </div>
+      <div class="p3bdy" id="p3b${i}">
+        <div style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:4px">Habitación</div>
+        <div class="p3rrow">
+          <label class="p3rlbl" onclick="setRoom(${i},'individual')">
+            <div class="p3ring"><div class="p3dot${rd.type==='individual'?' on':''}" id="rd${i}ind"></div></div>
+            <span class="p3ltxt">Individual (+15€)</span>
+          </label>
+          <label class="p3rlbl" onclick="setRoom(${i},'doble')">
+            <div class="p3ring"><div class="p3dot${rd.type==='doble'?' on':''}" id="rd${i}dob"></div></div>
+            <span class="p3ltxt">Doble</span>
+          </label>
         </div>
-        <div class="serr" id="serr${i}">Selecciona una opción</div>
-        ${sd.answer==='si'?`<div style="margin-top:8px"><a style="font-size:14px;color:var(--g);text-decoration:underline;cursor:pointer" onclick="openSrvSheet(${i})">Seleccionar servicios</a></div>`:''}        ${sd.services&&sd.services.length?`<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px">${sd.services.map(s=>`<span class="tag">${s}</span>`).join('')}</div>`:''}      </div>
-    </div></div>`;
+        <div class="serr on" id="rerr${i}" style="display:none">Selecciona el tipo de habitación</div>
+        ${!isIndividual?`<div style="margin-top:10px">${rmChip}
+          <div style="margin-top:6px">
+            <span onclick="openRoomSheet(${i})" style="font-size:14px;color:var(--g);text-decoration:underline;cursor:pointer;display:inline-flex;align-items:center;gap:4px">Editar habitación <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#03594C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"/></svg></span>
+          </div>
+        </div>`:''}
+        <div style="border-top:1px solid var(--bd);margin-top:10px;padding-top:10px">
+          <div style="font-size:14px;font-weight:600;color:var(--g);margin-bottom:4px">¿Necesita servicios especiales?</div>
+          <div style="display:flex;gap:36px">
+            <label class="p3rlbl" onclick="setSrv(${i},'si')"><div class="p3ring"><div class="p3dot${sd.answer==='si'?' on':''}" id="rs${i}si"></div></div><span class="p3ltxt">Sí</span></label>
+            <label class="p3rlbl" onclick="setSrv(${i},'no')"><div class="p3ring"><div class="p3dot${sd.answer==='no'?' on':''}" id="rs${i}no"></div></div><span class="p3ltxt">No</span></label>
+          </div>
+          <div class="serr" id="serr${i}">Selecciona una opción</div>
+          ${sd.answer==='si'?`<div style="margin-top:8px"><a style="font-size:14px;color:var(--g);text-decoration:underline;cursor:pointer" onclick="openSrvSheet(${i})">Seleccionar servicios</a></div>`:''}
+          ${sd.services&&sd.services.length?`<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px">${sd.services.map(s=>`<span class="tag">${s}</span>`).join('')}</div>`:''}
+        </div>
+      </div>
+    </div>`;
   }).join('');
 }
-function tgP3(i){const b=document.getElementById(`p3b${i}`),ic=document.getElementById(`p3ic${i}`);b.classList.toggle('hid');ic.classList.toggle('op');}
+
+function tgP3(i){
+  const b=document.getElementById(`p3b${i}`),ic=document.getElementById(`p3ic${i}`);
+  b.classList.toggle('hid');ic.classList.toggle('op');
+}
+
 function setRoom(i,type){
-  if(!roomData[i])roomData[i]={type:null,roommate:null};
+  if(!roomData[i]) roomData[i]={type:null,roommate:null};
+  const prev=roomData[i].type;
   roomData[i].type=type;
-  if(type==='individual')roomData[i].roommate=null;
-  document.getElementById(`rerr${i}`).classList.remove('on');
-  // Also update roommate's card if they were paired with this person
+  if(type==='individual'){
+    // Unpair previous roommate, leave them unassigned
+    const prevRm=roomData[i].roommate;
+    if(prevRm!==null && prevRm>=0 && passengers[prevRm]){
+      roomData[prevRm].roommate=null; // leave unassigned
+    }
+    roomData[i].roommate=null;
+  } else if(type==='doble' && prev==='individual'){
+    // Switched to doble: leave unassigned until user picks
+    roomData[i].roommate=null;
+  }
+  document.getElementById(`rerr${i}`).style.display='none';
   renderP3();
 }
+
 function openRoomSheet(i){
   curRoomIdx=i;
   const p=passengers[i];
   document.getElementById('roomTit').textContent=p.first+' '+p.last;
   const rd=roomData[i]||{roommate:null};
-  
-  // Find which passengers are already taken:
-  // "taken" = they chose individual, OR they have a roommate that is NOT passenger i
-  const available=passengers.filter((_,j)=>{
-    if(j===i) return false; // not self
-    const jr=roomData[j]||{};
-    if(jr.type==='individual') return false; // chose individual
-    // if j is paired with someone else (not i), exclude
-    if(jr.roommate!==null && jr.roommate!==undefined && jr.roommate!==-1 && jr.roommate!==i) return false;
-    return true;
-  }).map((_,localIdx,arr)=>({idx:passengers.indexOf(arr[localIdx]),p:arr[localIdx]}));
 
-  // Also exclude passengers who are currently the roommate TARGET of someone else (not i)
-  // e.g. if passenger 2 has roommate=3, then passenger 3 should not appear for passenger 0
-  const pairedTargets=new Set();
-  passengers.forEach((_,k)=>{
-    if(k===i) return;
-    const kr=roomData[k]||{};
-    if(kr.roommate!==null && kr.roommate!==undefined && kr.roommate!==-1 && kr.roommate!==i){
-      pairedTargets.add(kr.roommate);
-    }
-  });
-  
-  const filteredAvail=available.filter(o=>!pairedTargets.has(o.idx));
-  
-  const aleatItem=`<div class="ri" onclick="selRoommate(-1)"><div class="rc${rd.roommate===-1?' on':''}"></div><div><div class="rl">Asignar compañero aleatorio</div><div style="font-size:12px;color:var(--mu)">Se asignará alguien de otra reserva</div></div></div>`;
-  
-  if(filteredAvail.length===0){
-    document.getElementById('roomList').innerHTML=
-      '<div style="padding:16px 0 4px;text-align:center;color:var(--mu);font-size:14px">No hay pasajeros disponibles</div>'+aleatItem;
-  } else {
-    document.getElementById('roomList').innerHTML=
-      filteredAvail.map(o=>`<div class="ri" onclick="selRoommate(${o.idx})"><div class="rc${rd.roommate===o.idx?' on':''}"></div><div class="rl">${o.p.name}</div></div>`).join('')+aleatItem;
-  }
+  // Show ALL other passengers, no exclusions
+  const aleat=`<div class="ri" onclick="selRoommate(-1)"><div class="rc${rd.roommate===-1?' on':''}"></div><div><div class="rl">Compañero aleatorio de otra reserva</div><div style="font-size:12px;color:var(--mu)">Se asignará alguien de otra reserva</div></div></div>`;
+
+  const rows = passengers.map((op,j)=>{
+    if(j===i) return '';
+    const selected = rd.roommate===j;
+    return `<div class="ri" onclick="selRoommate(${j})"><div class="rc${selected?' on':''}"></div><div class="rl">${op.name}</div></div>`;
+  }).join('');
+
+  document.getElementById('roomList').innerHTML = rows + aleat;
   openSh('shRoom');
 }
+
 function selRoommate(j){
-  // Update current person
-  roomData[curRoomIdx].roommate=j;
-  // If a real person was selected, update their card too (mirror)
-  if(j>=0&&passengers[j]){
-    if(!roomData[j])roomData[j]={type:null,roommate:null};
-    roomData[j].type='doble';
-    roomData[j].roommate=curRoomIdx;
+  const i=curRoomIdx;
+  const prevRm=roomData[i]?roomData[i].roommate:null;
+
+  // If j is already paired with someone else k, unpair k (leave unassigned: roommate=null)
+  if(j>=0 && passengers[j]){
+    const jrd=roomData[j]||{};
+    const prevJrm=jrd.roommate;
+    if(prevJrm!==null && prevJrm!==undefined && prevJrm!==-1 && prevJrm!==i){
+      if(!roomData[prevJrm]) roomData[prevJrm]={type:'doble',roommate:null};
+      roomData[prevJrm].roommate=null; // leave unassigned
+    }
   }
-  closeAllSh();renderP3();
+
+  // Unpair previous roommate of i (leave unassigned)
+  if(prevRm!==null && prevRm!==undefined && prevRm>=0 && passengers[prevRm] && prevRm!==j){
+    if(!roomData[prevRm]) roomData[prevRm]={type:'doble',roommate:null};
+    roomData[prevRm].roommate=null; // leave unassigned
+  }
+
+  // Assign new roommate to i
+  if(!roomData[i]) roomData[i]={type:'doble',roommate:null};
+  roomData[i].roommate=j;
+  roomData[i].type='doble';
+
+  // Mirror: if real person, pair them back with i
+  if(j>=0 && passengers[j]){
+    if(!roomData[j]) roomData[j]={type:'doble',roommate:null};
+    roomData[j].roommate=i;
+    roomData[j].type='doble';
+  }
+
+  closeAllSh();
+  renderP3();
 }
+
 function setSrv(i,val){
-  if(!srvData[i])srvData[i]={answer:null,services:[]};
+  if(!srvData[i]) srvData[i]={answer:null,services:[]};
   srvData[i].answer=val;
-  if(val==='no')srvData[i].services=[];
+  if(val==='no') srvData[i].services=[];
   document.getElementById(`serr${i}`).classList.remove('on');
   renderP3();
 }
+
 function openSrvSheet(i){
   curSrvIdx=i;
   const sd=srvData[i]||{services:[]};
@@ -1239,32 +1324,57 @@ function openSrvSheet(i){
   document.querySelectorAll('#srvList .chb').forEach(b=>b.classList.remove('on'));
   document.querySelectorAll('#srvList .chi').forEach(item=>{
     const lbl=item.querySelector('.chl').textContent;
-    if((sd.services||[]).includes(lbl))item.querySelector('.chb').classList.add('on');
+    if((sd.services||[]).includes(lbl)) item.querySelector('.chb').classList.add('on');
   });
   updSrvCnt();openSh('shSrv');
 }
+
 function saveSrv(){
   const sel=[];
-  document.querySelectorAll('#srvList .chi').forEach(item=>{if(item.querySelector('.chb').classList.contains('on'))sel.push(item.querySelector('.chl').textContent);});
-  if(!srvData[curSrvIdx])srvData[curSrvIdx]={answer:'si',services:[]};
+  document.querySelectorAll('#srvList .chi').forEach(item=>{
+    if(item.querySelector('.chb').classList.contains('on')) sel.push(item.querySelector('.chl').textContent);
+  });
+  if(!srvData[curSrvIdx]) srvData[curSrvIdx]={answer:'si',services:[]};
   srvData[curSrvIdx].services=sel;
-  if(sel.length)srvData[curSrvIdx].answer='si';
+  if(sel.length) srvData[curSrvIdx].answer='si';
   closeAllSh();renderP3();
 }
+
 function updSrvCnt(){
   const n=document.querySelectorAll('#srvList .chb.on').length;
   const sub=document.getElementById('srvSub');
-  if(sub)sub.textContent=sub.textContent.replace(/\d+ seleccionados/,n+' seleccionados');
+  if(sub) sub.textContent=sub.textContent.replace(/\d+ seleccionados/,n+' seleccionados');
 }
+
 function valP3(){
   let ok=true;
+  // Check servicios
   passengers.forEach((_,i)=>{
-    const rd=roomData[i]||{};const sd=srvData[i]||{};
-    if(!rd.type){document.getElementById(`rerr${i}`).classList.add('on');document.getElementById(`p3b${i}`).classList.remove('hid');document.getElementById(`p3ic${i}`).classList.add('op');ok=false;}
-    if(!sd.answer){document.getElementById(`serr${i}`).classList.add('on');document.getElementById(`p3b${i}`).classList.remove('hid');document.getElementById(`p3ic${i}`).classList.add('op');ok=false;}
+    const sd=srvData[i]||{};
+    if(!sd.answer){
+      document.getElementById(`serr${i}`).classList.add('on');
+      document.getElementById(`p3b${i}`).classList.remove('hid');
+      document.getElementById(`p3ic${i}`).classList.add('op');
+      ok=false;
+    }
   });
-  if(ok)goTo(5);else document.getElementById('s4').querySelector('.body').scrollTop=0;
+  // Check unassigned doble passengers (roommate===null and type!='individual')
+  const hasUnassigned=passengers.some((_,i)=>{
+    const rd=roomData[i]||{};
+    return rd.type!=='individual' && (rd.roommate===null||rd.roommate===undefined);
+  });
+  const errEl=document.getElementById('p3GlobalErr');
+  if(hasUnassigned){
+    errEl.style.display='flex';
+    ok=false;
+  } else {
+    errEl.style.display='none';
+  }
+  if(ok) goTo(5);
+  else document.getElementById('s4').querySelector('.body').scrollTop=document.getElementById('s4').querySelector('.body').scrollHeight;
 }
+
+
 // ===== PASO 4 =====
 function renderP4(){
   document.getElementById('p4cnt').textContent=`(${passengers.length})`;
@@ -1349,17 +1459,24 @@ function selPay(method){
 function doPay(){
   if(!payMethod){document.getElementById('errPay').classList.add('on');return;}
   clearInterval(payTmr);
-  if(payMethod==='tarjeta')goTo(6.6);
-  else if(payMethod==='bizum')goTo(6.7);
-  else if(payMethod==='trans')goTo(6.8);
-  else if(payMethod==='oficina'){
-    // Go directly to paso 7 with pending status
-    document.getElementById('confPago').textContent='En oficina de viajes';
-    document.getElementById('confEstado').innerHTML='<span style="background:#FFE0B2;color:#E65100;padding:3px 10px;border-radius:99px;font-size:13px;font-weight:600">Pendiente</span>';
-    document.getElementById('confAlert').style.display='block';
+  if(payMethod==='tarjeta') goTo(6.6);
+  else if(payMethod==='bizum') goTo(6.7);
+  else if(payMethod==='trans') goTo(6.8);
+  else if(payMethod==='agencia' || payMethod==='cajero'){
+    const label = payMethod==='cajero' ? 'Cajero automático' : 'Agencia de viajes';
+    const alertMsg = payMethod==='cajero'
+      ? 'Acude a un cajero automático para completar el pago. Tu reserva está registrada pero no confirmada hasta que realices el pago total.'
+      : 'Acuda a la agencia de viajes para completar el pago. Tu reserva está registrada pero no confirmada hasta que realices el pago total.';
+    document.getElementById('confPago').textContent = label;
+    document.getElementById('confEstado').innerHTML = '<span style="background:#FFE0B2;color:#E65100;padding:3px 10px;border-radius:99px;font-size:13px;font-weight:600">Pendiente</span>';
+    const alertEl = document.getElementById('confAlert');
+    const alertTxtEl = document.getElementById('confAlertText');
+    if(alertEl) alertEl.style.display = 'block';
+    if(alertTxtEl) alertTxtEl.textContent = alertMsg;
     goTo(7);
   }
 }
+
 function fmtCard(inp){let v=inp.value.replace(/\D/g,'').substring(0,16);inp.value=v.replace(/(.{4})/g,'$1 ').trim();}
 // ===== PASO 7 =====
 function renderP7(){
@@ -1367,11 +1484,15 @@ function renderP7(){
   document.getElementById('r7list').innerHTML=passengers.map((p,i)=>`<div class="paxrow" onclick="tgPaxRow(this,'r7p${i}')"><div class="avsm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#03594C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="paxrname"><strong>${p.first}</strong> ${p.last}</div><svg class="exic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#03594C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg></div><div class="exbd" id="r7p${i}"></div>`).join('');
   document.getElementById('r7plist').innerHTML=passengers.map((_,i)=>`<div class="prow2"><span style="color:var(--mu)">${passengers[i].name}</span><span>${fmtEur(getPrice(i))}</span></div>`).join('');
   document.getElementById('r7tot').textContent=fmtEur(getTotal());
-  // Reset payment status display if not officina
-  if(payMethod!=='oficina'){
-    document.getElementById('confPago').textContent=payMethod==='tarjeta'?'Tarjeta':payMethod==='bizum'?'Bizum':'Transferencia online';
+  // Set payment status based on method
+  if(payMethod==='agencia'||payMethod==='cajero'){
+    // Already set by doPay — don't overwrite
+  } else {
+    const labels={tarjeta:'Tarjeta',bizum:'Bizum',trans:'Transferencia online'};
+    document.getElementById('confPago').textContent=labels[payMethod]||'Online';
     document.getElementById('confEstado').innerHTML='<span style="background:#C8E6C9;color:#1B5E20;padding:3px 10px;border-radius:99px;font-size:13px;font-weight:600">Realizado</span>';
-    document.getElementById('confAlert').style.display='none';
+    const alertEl=document.getElementById('confAlert');
+    if(alertEl) alertEl.style.display='none';
   }
 }
 // ===== SHEETS =====
