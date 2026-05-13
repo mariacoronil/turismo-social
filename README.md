@@ -82,8 +82,9 @@ https://mariacoronil.github.io/turismo-social/
 
 ```
 /
-├── index.html        # Prototipo completo (HTML + CSS + JS)
-└── README.md         # Este archivo
+├── index.html                                 # Prototipo completo (HTML + CSS + JS)
+└── README.md                                  # Este archivo
+└── sesion_diseno_ia_turismosocial.pdf         # Resumen de cómo se creó este prototipo paso a paso
 ```
 
 ---
